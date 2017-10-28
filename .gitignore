@@ -2,3 +2,72 @@
 /project/build/target/
 /project/boot/sbt.boot.lock
 /project/boot/update.log
+
+
+bin/
+target/
+project/
+*.class
+*.db
+.DS_Store
+*.scala.orig
+*.log
+.gitignore
+.idea
+.settings
+.classpath
+.project
+.cache
+target
+#src/main/resources/
+src/test/resources/
+*.iml
+src/main/scala/ProgrammingInScala/
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+out
+gen### Scala template
+
+# sbt specific
+.history
+.lib/
+dist/*
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+# Scala-IDE specific
+.scala_dependencies
+.worksheet
+
+# ENSIME specific
+.ensime_cache/
+.ensime
+
+project/project/
+sbt
+sbt-launch-0.13.8.jar
+src/main/scala/chenChaoVideo/comet/
+src/main/scala/chenChaoVideo/view/
+
+lib_managed
+project/boot
+project/build/target
+target
+.*\.DS_Store
+.*\.zip
+.iml
+.ipr
+.iws
+.idea*
+.classpath
+.project
+.cache
+.idea_modules
+.idea
+sbtboot
+ivyrepo
+
