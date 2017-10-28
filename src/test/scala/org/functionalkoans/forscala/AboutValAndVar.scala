@@ -50,8 +50,8 @@ class AboutValAndVar extends KoanSuite {
   koan("A lazy val is assignment that will not evaluated until it is called. Note there is no lazy var") {
     var history = ""
     lazy val a = {history = history + "5"; 19}
-    history should be(__)
-    a should be (__)
-    history should be(__)
+    history should be("")
+    a should be (19)
+    history should be("5")
   }
 }
