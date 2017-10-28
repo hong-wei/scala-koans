@@ -19,7 +19,7 @@ showSuccess := false
 // append -deprecation to the options passed to the Scala compiler
 scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
 
-// disable updating dynamic revisions (including -SNAPSHOT versions)
+// disable updating dynamic revisions (including -SNAPSHOT versions), why I can do this??
 offline := true
 
 libraryDependencies ++= Seq(
