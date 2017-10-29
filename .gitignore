@@ -12,7 +12,6 @@ project/
 .DS_Store
 *.scala.orig
 *.log
-.gitignore
 .idea
 .settings
 .classpath
