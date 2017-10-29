@@ -1,4 +1,3 @@
-val r = List(1, 2, 3) match {
-  case x :: y :: z::Nil => y
-  case _ => 0
-}
+val xs = List(3, 5, 9)
+val ys = List("Bob", "Ann")
+xs zipAll(ys, 1, "?")
