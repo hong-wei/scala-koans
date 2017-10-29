@@ -1,9 +1,4 @@
-import scala.collection.mutable
-
-val mySet = Set("Michigan", "Ohio", "Wisconsin", "Iowa")
-val aNewSet = mySet + "Illinois"+"123"
-
-val mySetM =  mutable.Set("Michigan", "Ohio", "Wisconsin", "Iowa")
-mySetM += "123" +"1234"
-
-mySetM
+val r = List(1, 2, 3) match {
+  case x :: y :: z::Nil => y
+  case _ => 0
+}
