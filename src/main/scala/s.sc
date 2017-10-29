@@ -1,6 +1,9 @@
-val myMap = Map("OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
+import scala.collection.mutable
 
-// Cheat Code (because this is hard to illustrate): uncomment the intercept code to make this pass 
-//intercept[NoSuchElementException] {
+val mySet = Set("Michigan", "Ohio", "Wisconsin", "Iowa")
+val aNewSet = mySet + "Illinois"+"123"
 
-myMap-"aaa"
+val mySetM =  mutable.Set("Michigan", "Ohio", "Wisconsin", "Iowa")
+mySetM += "123" +"1234"
+
+mySetM
