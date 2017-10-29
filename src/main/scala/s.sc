@@ -1,3 +1,5 @@
-val xs = List(3, 5, 9)
-val ys = List("Bob", "Ann")
-xs zipAll(ys, 1, "?")
+val stringBuilder = new StringBuilder()
+val list = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
+stringBuilder.append("I want all numbers 6-12: ")
+list.filter(it => it > 5 && it < 13).addString(stringBuilder, ",")
+stringBuilder.mkString
