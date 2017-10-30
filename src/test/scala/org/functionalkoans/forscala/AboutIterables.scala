@@ -67,14 +67,14 @@ class AboutIterables extends KoanSuite with ShouldMatchers {
     (xs zip ys) should be(List((3, "Bob"), (5, "Ann")))
   }
 
-  //BK 1 zipAll xs zipAll(ys, -1, "?")??
-  koan( """if two Iterables aren't the same size, then `zipAll` can provide fillers for what it couldn't
-          |  find a complement for. e.g. Iterable(x1, x2, x3) zipAll (Iterable(y1, y2), x, y) will
-          |  return ((x1,y1), (x2, y2, y))""") {
-    val xs = List(3, 5, 9)
-    val ys = List("Bob", "Ann")
-    (xs zipAll(ys, -1, "?")) should be(List((3, "Bob"), (5, "Ann111"), (9, "?")))
-  }
+//  //BK 1 zipAll xs zipAll(ys, -1, "?")??
+//  koan( """if two Iterables aren't the same size, then `zipAll` can provide fillers for what it couldn't
+//          |  find a complement for. e.g. Iterable(x1, x2, x3) zipAll (Iterable(y1, y2), x, y) will
+//          |  return ((x1,y1), (x2, y2, y))""") {
+//    val xs = List(3, 5, 9)
+//    val ys = List("Bob", "Ann")
+//    (xs zipAll(ys, -1, "?")) should be(List((3, "Bob"), (5, "Ann111"), (9, "?")))
+//  }
 
   koan( """`zipWithIndex` will zip an Iterable with it's integer index""") {
     val xs = List("Manny", "Moe", "Jack")

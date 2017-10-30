@@ -13,7 +13,7 @@ class AboutMethods extends KoanSuite {
     def add(x: Int, y: Int) = {
       x + y
     }
-    add(6, 7) should be(__)
+    add(6, 7) should be(13)
   }
 
   koan(
@@ -23,7 +23,7 @@ class AboutMethods extends KoanSuite {
       //Notice the :Int at the end of the method
       x + y
     }
-    add(2, 10) should be(__)
+    add(2, 10) should be(12)
   }
 
 
@@ -33,20 +33,20 @@ class AboutMethods extends KoanSuite {
       | the type of the method will likely be inferred as the
       | common super parent of the two types being returned""") {
 
-    def add(x: Int, y: Int) = {
+    def add(x: Int, y: Int): Any = {
       //implicitly the return type is Any
       if (x > 10) (x + y).toString
       else x + y
     }
 
-    add(2, 10) should be(__)
-    add(1, 1) should be(__)
+    add(2, 10) should be(12)
+    add(1, 1) should be(2)
   }
 
 
   koan( """If a method does not of have equal it is considered `Unit` which is analogous to `void` in Java""") {
     def foo(x: Int) { //Note: No `=`
-      (x + 4) should be(__)
+      (x + 4) should be(9)
     }
     foo(5)
   }
@@ -55,19 +55,19 @@ class AboutMethods extends KoanSuite {
     """If you want to have an = on the method, while still explicitly returning Unit you can make the return type `Unit`,
       | this also analogous to `void""") {
     def foo(x: Int): Unit = { //Note we are declaring Unit
-      (x + 4) should be(__)
+      (x + 4) should be(7)
     }
     foo(3)
   }
 
   koan( """Once you have an =, it is understood that there will be a return type and can be inferred""") {
     def foo(x: Int) = 3 + 4
-    foo(3).isInstanceOf[Int] should be(__) //.isInstanceOf[...] is analogous to Java's instanceOf
+    foo(3).isInstanceOf[Int] should be(true) //.isInstanceOf[...] is analogous to Java's instanceOf
   }
 
   koan( """Of course if you wish to be explicit about the return type, you can attach it at the end of the method""") {
     def foo(x: Int): Int = 3 + 4
-    foo(3).isInstanceOf[Int] should be(__)
+    foo(3).isInstanceOf[Int] should be(true)
   }
 
   koan(
@@ -79,7 +79,7 @@ class AboutMethods extends KoanSuite {
       else x * factorial(x-1)
     }
 
-    factorial(4) should be(__) // List(...) is how a list is created more about lists later.
+    factorial(4) should be(24) // List(...) is how a list is created more about lists later.
 
     //Note: Fire up a REPL and paste factorial(100000)!
   }
@@ -92,19 +92,19 @@ class AboutMethods extends KoanSuite {
       | Scala compiler will optimize the code from stack recursion into a loop at compile time""") {
 
     import scala.annotation.tailrec //importing annotation!
-    @tailrec
+    @tailrec //BK 3 tailrec where is the adding operater???
     def fact(i: BigInt, accumulator: BigInt): BigInt = { // This is an accumulator to ensure tail recursion!
-      if (i <= 1)
+      if (i <= 1) // 4,1 
         accumulator
       else
-        fact(i - 1, i * accumulator)
+        fact(i - 1, i * accumulator)// i * accumulator --> 4*3*2*1
     }
 
     def factorial(i: BigInt): BigInt = {
       fact(i, 1)
     }
 
-    factorial(4) should be(__)
+    factorial(4) should be(24)
 
     //Note: Fire up a REPL and try factorial(100000) now!
   }
