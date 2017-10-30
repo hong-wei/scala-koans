@@ -1,5 +1,5 @@
-val stringBuilder = new StringBuilder()
-val list = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
-stringBuilder.append("I want all numbers 6-12: ")
-list.filter(it => it > 5 && it < 13).addString(stringBuilder, ",")
-stringBuilder.mkString
+def repeatedParameterMethod(x: Int, y: String, z: Any*) = {
+  "%d %ss can give you %s".format(x, y, z.mkString(", "))
+}
+
+repeatedParameterMethod(3, "egg", List("a delicious sandwich", "protein", "high cholesterol"))

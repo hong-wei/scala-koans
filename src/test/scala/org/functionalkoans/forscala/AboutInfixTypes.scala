@@ -9,8 +9,8 @@ class AboutInfixTypes extends KoanSuite with ShouldMatchers {
            between two types in order to make a readable delaration""") {
     case class Person(name: String)
     class Loves[A, B](val a: A, val b: B)
-
-    def announceCouple(couple: Person Loves Person) = {
+ 
+    def announceCouple(couple: Person Loves Person) = { // def announceCouple(couple: Loves[Person,Person]) 
       //Notice our type: Person loves Person!
       couple.a.name + " is in love with " + couple.b.name
     }
@@ -18,7 +18,7 @@ class AboutInfixTypes extends KoanSuite with ShouldMatchers {
     val romeo = new Person("Romeo")
     val juliet = new Person("Juliet")
 
-    announceCouple(new Loves(romeo, juliet)) should be(__)
+    announceCouple(new Loves(romeo, juliet)) should be("Romeo is in love with Juliet")
   }
 
   koan("""Of course we can make this a bit more elegant by creating an infix operator
@@ -38,7 +38,7 @@ class AboutInfixTypes extends KoanSuite with ShouldMatchers {
     val romeo = new Person("Romeo")
     val juliet = new Person("Juliet")
 
-    announceCouple(romeo loves juliet) should be(__)
+    announceCouple(romeo loves juliet) should be("Romeo is in love with Juliet")
   }
 
 
