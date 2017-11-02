@@ -521,7 +521,7 @@
 //    def addHistory(s: String) {
 //      history = history :+ s //Doubling 1
 //    }
-//  
+//
 //    lst // 1 2 3
 //      .map { x => addHistory("Doubling %s".format(x)); x * 2 } //
 //      .map { x => addHistory("Adding 1 to %s".format(x)); x + 1 }
