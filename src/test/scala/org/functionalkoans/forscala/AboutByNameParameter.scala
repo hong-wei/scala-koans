@@ -2,6 +2,7 @@ package org.functionalkoans.forscala
 
 import org.functionalkoans.forscala.support.KoanSuite
 //BK read more about  ByNameParameter --https://tpolecat.github.io/2014/06/26/call-by-name.html
+//https://alvinalexander.com/source-code/scala/simple-scala-call-name-example
 
 /**
  * AboutByNameParameter
@@ -10,6 +11,49 @@ import org.functionalkoans.forscala.support.KoanSuite
  *                About Pattern Matching, AboutApply
  */
 class AboutByNameParameter extends KoanSuite {
+  
+//  https://alvinalexander.com/source-code/scala/simple-scala-call-name-example
+ // call-by-value 
+  def time(): Long = {
+    println("In time()")
+    System.nanoTime
+  }
+  
+  def exec(t: Long): Long = {
+    println("Entered exec, calling t ...")
+    println("t = " + t)
+    println("Calling t again ...")
+    t
+  }
+  
+  println(exec(time())) // t is totally the same, before run exec, t has been evaluated. 
+//  In time()
+//  Entered exec, calling t ...
+//  t = 1363909521286596000
+//  Calling t again ...
+//  1363909521286596000
+  
+  //call- by - name
+  def time2() = {
+    println("Entered time() ...")
+    System.nanoTime
+  }
+  
+  // uses a by-name parameter here
+  def exec2(t: => Long) = {
+    println("Entered exec, calling t ...")
+    println("t = " + t)
+    println("Calling t again ...")
+    t
+  }
+  
+  println(exec2(time2())) // t is different ,each time, it call t, t will be evaluated again.
+//  Entered exec, calling t ...
+//  Entered time() ...
+//  t = 1363909593759120000
+//  Calling t again ...
+//  Entered time() ...
+//  1363909593759480000
   
   // https://tpolecat.github.io/2014/06/26/call-by-name.html
   def when[A](test: Boolean, whenTrue: A, whenFalse: A): A =
