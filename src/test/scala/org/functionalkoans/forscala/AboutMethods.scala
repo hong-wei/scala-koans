@@ -132,8 +132,8 @@ class AboutMethods extends KoanSuite {
       |  after an underscore, well you can do the same in methods""") {
 
     class Pennies(val n:Int)
-    def doYouHaveAnySpareChange_?() = new Pennies(25)
-    doYouHaveAnySpareChange_?.n should be(__)
+    def doYouHaveAnySpareChange_?(): Pennies = new Pennies(25)
+    doYouHaveAnySpareChange_?.n should be(25)
   }
 
   koan(
@@ -148,17 +148,17 @@ class AboutMethods extends KoanSuite {
     }
 
     val probationEmployee = `put employee on probation`(new Employee("Milton", "Waddams", ""))
-    probationEmployee.`employee status` should be (__)
+    probationEmployee.`employee status` should be ("Probation")
   }
 
   koan(
     """Convention (not required for the compiler) states that if you a call a method that
       |returns a Unit, invoke that method with empty parenthesis, other leave the parenthesis out""") {
 
-    def add(a:Int, b:Int) = a + b //implied return type of Int!
+    def add(a:Int, b:Int): Int = a + b //implied return type of Int!
     def performSideEffect():Unit = System.currentTimeMillis
 
-    add(4,6) should be (__)
+    add(4,6) should be (10)
     performSideEffect() //Notice the parenthesis, since the method we called is Unit!
   }
 
@@ -169,9 +169,9 @@ class AboutMethods extends KoanSuite {
     class Foo (y:Int) {
       def ~:(n:Int) = n + y + 3
     }
-
+    //TODO this is funnyy!!
     val foo = new Foo(9)
-    10 ~: foo should be (__)
-    foo.~:(40) should be (__)
+    10 ~: foo should be (10+9+3)
+    foo.~:(40) should be (40+9+3)
   }
 }

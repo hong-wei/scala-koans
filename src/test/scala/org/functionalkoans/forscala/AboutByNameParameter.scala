@@ -1,6 +1,7 @@
 package org.functionalkoans.forscala
 
 import org.functionalkoans.forscala.support.KoanSuite
+//BK read more about  ByNameParameter --https://tpolecat.github.io/2014/06/26/call-by-name.html
 
 /**
  * AboutByNameParameter
@@ -9,7 +10,27 @@ import org.functionalkoans.forscala.support.KoanSuite
  *                About Pattern Matching, AboutApply
  */
 class AboutByNameParameter extends KoanSuite {
-
+  
+  // https://tpolecat.github.io/2014/06/26/call-by-name.html
+  def when[A](test: Boolean, whenTrue: A, whenFalse: A): A =
+    test match {
+      case true  => whenTrue
+      case false => whenFalse
+    }
+  
+  when(1 == 1, println("foo"), println("bar"))
+  
+  //when is always evaluated,even if we do not use it . it has some side affect.
+  
+  
+  def when2[A](test: Boolean, whenTrue: => A, whenFalse: => A): A =
+    test match {
+      case true  => whenTrue
+      case false => whenFalse
+    }
+  
+  when2(1 == 1, println("foo"), println("bar"))
+  
   koan(
     """() => Int is a Function type that takes a Unit type. Unit is known as 'void' to a Java programmer. The function
       | and returns an Int. You can place this as a method parameter so that you can you use it as a block, but still
@@ -51,7 +72,7 @@ class AboutByNameParameter extends KoanSuite {
 
     y should be (Right(69))
   }
-//TODO ?? need read more ?
+  
   koan("""By name parameters can also be used with an Object and apply to make interesting block-like calls""") {
     object PigLatinizer {
       def apply(x: => String) = x.tail + x.head + "ay"
@@ -60,7 +81,7 @@ class AboutByNameParameter extends KoanSuite {
     val result = PigLatinizer {
       val x = "pret" // ret
       val z = "zel"  //ze
-      x ++ z //concatenate the strings "pretzel" -->lpay
+      x ++ z 
     }
 
     result should be ("retzelpay")
